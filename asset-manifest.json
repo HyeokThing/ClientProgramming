@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/HyeokThing/ClientProgramming/static/css/main.d4f86187.css",
+    "main.js": "/HyeokThing/ClientProgramming/static/js/main.a7ce75c1.js",
+    "static/js/453.4874efd1.chunk.js": "/HyeokThing/ClientProgramming/static/js/453.4874efd1.chunk.js",
+    "index.html": "/HyeokThing/ClientProgramming/index.html",
+    "main.d4f86187.css.map": "/HyeokThing/ClientProgramming/static/css/main.d4f86187.css.map",
+    "main.a7ce75c1.js.map": "/HyeokThing/ClientProgramming/static/js/main.a7ce75c1.js.map",
+    "453.4874efd1.chunk.js.map": "/HyeokThing/ClientProgramming/static/js/453.4874efd1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d4f86187.css",
+    "static/js/main.a7ce75c1.js"
+  ]
+}
