@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/HyeokThing/ClientProgramming/static/css/main.d4f86187.css",
-    "main.js": "/HyeokThing/ClientProgramming/static/js/main.a7ce75c1.js",
-    "static/js/453.4874efd1.chunk.js": "/HyeokThing/ClientProgramming/static/js/453.4874efd1.chunk.js",
-    "index.html": "/HyeokThing/ClientProgramming/index.html",
-    "main.d4f86187.css.map": "/HyeokThing/ClientProgramming/static/css/main.d4f86187.css.map",
-    "main.a7ce75c1.js.map": "/HyeokThing/ClientProgramming/static/js/main.a7ce75c1.js.map",
-    "453.4874efd1.chunk.js.map": "/HyeokThing/ClientProgramming/static/js/453.4874efd1.chunk.js.map"
+    "main.css": "/ClientProgramming/static/css/main.d4f86187.css",
+    "main.js": "/ClientProgramming/static/js/main.250d67f0.js",
+    "static/js/453.4874efd1.chunk.js": "/ClientProgramming/static/js/453.4874efd1.chunk.js",
+    "index.html": "/ClientProgramming/index.html",
+    "main.d4f86187.css.map": "/ClientProgramming/static/css/main.d4f86187.css.map",
+    "main.250d67f0.js.map": "/ClientProgramming/static/js/main.250d67f0.js.map",
+    "453.4874efd1.chunk.js.map": "/ClientProgramming/static/js/453.4874efd1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d4f86187.css",
-    "static/js/main.a7ce75c1.js"
+    "static/js/main.250d67f0.js"
   ]
 }
