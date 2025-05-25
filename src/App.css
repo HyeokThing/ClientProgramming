@@ -26,3 +26,10 @@ span {
   margin-top: 30px;
 }
 /* e : // divider */
+
+/* s : etc */
+.cart {
+  cursor: pointer;
+  font-size: 16px;
+}
+/* e : // etc */
