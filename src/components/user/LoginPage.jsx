@@ -36,7 +36,12 @@ const LoginPage = () => {
             sessionStorage.setItem("email", email);
             sessionStorage.setItem("uid", success.user.uid);
             setLoading(false);
-            navigate("/");
+
+            if(sessionStorage.getItem('target')){
+              navigate(sessionStorage.getItem('target'));
+            }else{
+              navigate("/");
+            }
           })
           .catch((error) => {
             console.log(error);

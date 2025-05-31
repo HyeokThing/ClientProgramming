@@ -32,4 +32,10 @@ span {
   cursor: pointer;
   font-size: 16px;
 }
+
+.heart {
+  color: red;
+  cursor: pointer;
+  font-size: 20px;
+}
 /* e : // etc */
