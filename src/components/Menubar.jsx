@@ -25,7 +25,7 @@ const Menubar = () => {
       <>
         <Navbar expand="lg" bg="dark" data-bs-theme="dark">
           <Container fluid>
-            <Navbar.Brand href={`${basename}/`}>Shop</Navbar.Brand>
+            <Navbar.Brand href={`${basename}/`}>React</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
               <Nav
@@ -41,7 +41,7 @@ const Menubar = () => {
                         href={`${basename}/cart`}
                         active={pathname === "/cart" && true}
                     >
-                      Cart
+                      장바구니
                     </Nav.Link>
                 )}
                 <Nav.Link href={`${basename}/post`}
