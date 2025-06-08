@@ -16,7 +16,7 @@ const Menubar = () => {
   const onLogout = (e) => {
     e.preventDefault();
 
-    if (window.confirm("Logout?")) {
+    if (window.confirm("로그아웃 하시겠습니까?")) {
       sessionStorage.clear();
       navi("/");
     }
@@ -54,7 +54,7 @@ const Menubar = () => {
                         {email}
                       </Nav.Link>
                       <Nav.Link href="#" onClick={onLogout}>
-                        Logout
+                        로그아웃
                       </Nav.Link>
                     </>
                 ) : (
@@ -62,7 +62,7 @@ const Menubar = () => {
                         href={`${basename}/login`}
                         active={pathname === "/login" && true}
                     >
-                      Login
+                      로그인
                     </Nav.Link>
                 )}
               </Nav>

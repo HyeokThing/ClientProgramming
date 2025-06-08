@@ -29,7 +29,7 @@ const JoinPage = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (email === "" || pass === "") {
-      alert("input your email or password");
+      alert("공란이 있습니다.");
     } else {
       // join check
       if (window.confirm("가입하시겠습니까?")) {
@@ -83,7 +83,7 @@ const JoinPage = () => {
                       onChange={onChange}
                   />
                   <Button type="submit" className="w-100">
-                    Join
+                    회원가입
                   </Button>
                 </Form>
               </Card.Body>

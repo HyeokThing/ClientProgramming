@@ -86,11 +86,11 @@ const LoginPage = () => {
                       onChange={onChange}
                   />
                   <Button type="submit" className="w-100 mt-2">
-                    Login
+                    로그인
                   </Button>
                 </Form>
                 <div className="mt-3 text-end">
-                  <a href={`${basename}/join`}>Join</a>
+                  <a href={`${basename}/join`}>회원가입</a>
                 </div>
               </Card.Body>
             </Card>
