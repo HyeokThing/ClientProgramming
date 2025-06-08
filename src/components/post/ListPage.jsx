@@ -82,9 +82,9 @@ const ListPage = () => {
                 <Button onClick={() => setPage(page - 1)}
                         disabled={page === 1}
                         size='sm' className='px-3'>이전</Button>
-                <span className='mx-3'>{page}</span>
+                <span className='mx-3'>{page} / {lastPage}</span>
                 <Button onClick={() => setPage(page + 1)}
-                        disabled = {page === lastPage}
+                        disabled={page === lastPage}
                         size='sm' className='px-3'>다음</Button>
             </div>
         </div>
