@@ -4,6 +4,7 @@ import { getFirestore, collection, query, orderBy, where, onSnapshot, doc, updat
 import { Button, Col, Row } from 'react-bootstrap';
 
 const CommentList = ({pid}) => {
+    const [visibleCount, setVisibleCount] = useState(5);
     const login = sessionStorage.getItem('email');
     const db = getFirestore(app);
     const [list, setList] = useState([]);
@@ -83,7 +84,7 @@ const CommentList = ({pid}) => {
     return (
         <Row className="justify-content-center mt-3">
             <Col md={10}>
-                {list.map(comment => (
+                {list.slice(0, visibleCount).map(comment => (
                     <div key={comment.id} style={{marginBottom: '1rem', padding: '0.5rem', border: '1px solid #ccc'}}>
                         <div>
                               <span style={{
@@ -144,6 +145,14 @@ const CommentList = ({pid}) => {
                         )}
                     </div>
                 ))}
+
+                {list.length > visibleCount && (
+                    <div className="text-center">
+                        <Button variant="secondary" onClick={() => setVisibleCount(visibleCount + 5)}>
+                            댓글 더보기
+                        </Button>
+                    </div>
+                )}
             </Col>
         </Row>
     );
