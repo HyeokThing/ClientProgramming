@@ -161,13 +161,13 @@ const Home = () => {
         </Row>
         <div className="d-flex justify-content-center mt-3">
           <Button disabled={page === 1} onClick={() => setPage(page - 1)}>
-            Prev
+            이전
           </Button>
           <span className="mx-2 my-2">
           {page} / {last}
         </span>
           <Button disabled={page === last} onClick={() => setPage(page + 1)}>
-            Next
+            다음
           </Button>
         </div>
       </div>

@@ -114,13 +114,13 @@ const Locals = () => {
       </Table>
       <div className="text-center my-2">
         <Button disabled={page === 1} onClick={() => setPage(page - 1)}>
-          Prev
+          이전
         </Button>
         <span className="mx-2">
           {page} / {last}
         </span>
         <Button disabled={page === last} onClick={() => setPage(page + 1)}>
-          Next
+          다음
         </Button>
       </div>
     </div>
