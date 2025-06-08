@@ -84,9 +84,15 @@ const CommentList = ({pid}) => {
         <Row className="justify-content-center mt-3">
             <Col md={10}>
                 {list.map(comment => (
-                    <div key={comment.id} style={{ marginBottom: '1rem', padding: '0.5rem', border: '1px solid #ccc' }}>
+                    <div key={comment.id} style={{marginBottom: '1rem', padding: '0.5rem', border: '1px solid #ccc'}}>
                         <div>
-                            {comment.date} | {comment.email}
+                              <span style={{
+                                  fontWeight: 'bold',
+                                  color: comment.email === login ? '#0d6efd' : '#000'
+                              }}>
+                                {comment.date} | {comment.email} {comment.email === login &&
+                                  <span style={{fontWeight: 'normal', color: '#0d6efd'}}>(내 댓글)</span>}
+                              </span>
                         </div>
                         <div>
                             {editId === comment.id ? (
@@ -94,10 +100,10 @@ const CommentList = ({pid}) => {
                                     value={editContents}
                                     onChange={(e) => setEditContents(e.target.value)}
                                     rows={3}
-                                    style={{ width: '100%' }}
+                                    style={{width: '100%'}}
                                 />
                             ) : (
-                                <p style={{ whiteSpace: 'pre-wrap' }}>{comment.contents}</p>
+                                <p style={{whiteSpace: 'pre-wrap'}}>{comment.contents}</p>
                             )}
                         </div>
                         {comment.email === login && (
