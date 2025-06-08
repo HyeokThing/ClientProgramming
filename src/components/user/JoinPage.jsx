@@ -13,8 +13,8 @@ const JoinPage = () => {
   const navi = useNavigate();
 
   const [form, setForm] = useState({
-    email: "inha1234@gmail.com",
-    pass: "123456",
+    email: "nunu00@gmail.com",
+    pass: "nunu123456",
   });
 
   const { email, pass } = form;
@@ -32,18 +32,18 @@ const JoinPage = () => {
       alert("input your email or password");
     } else {
       // join check
-      if (window.confirm("Join?")) {
+      if (window.confirm("가입하시겠습니까?")) {
         setLoading(true);
         createUserWithEmailAndPassword(auth, email, pass)
             .then((success) => {
-              alert("Join ok");
+              alert("회원가입 성공");
               setLoading(false);
               navi("/login");
             })
             .catch((error) => {
               console.log(error.message);
               setLoading(false);
-              alert("Join failed");
+              alert("회원가입 실패");
             });
       }
     }

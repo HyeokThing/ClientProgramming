@@ -11,8 +11,8 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    email: "inha1234@gmail.com",
-    pass: "123456",
+    email: "nunu00@gmail.com",
+    pass: "nunu123456",
   });
   const { email, pass } = form;
 
@@ -26,13 +26,13 @@ const LoginPage = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (email === "" || pass === "") {
-      alert("input your email or password");
+      alert("이메일 또는 비밀번호가 일치하지 않습니다.");
     } else {
       // login check
       setLoading(true);
       signInWithEmailAndPassword(auth, email, pass)
           .then((success) => {
-            alert("Login ok");
+            alert("로그인 성공");
             sessionStorage.setItem("email", email);
             sessionStorage.setItem("uid", success.user.uid);
             setLoading(false);

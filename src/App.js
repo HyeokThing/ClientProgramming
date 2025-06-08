@@ -8,7 +8,7 @@ const App = () => {
   const basename = process.env.PUBLIC_URL;
   return (
     <div>
-      <img src={basename + "/sky.jpg"} width="100%" height="150px" alt="" />
+      <img src={basename + "/home.jpg"} width="100%" height="150px" alt="" />
       <Menubar />
       <Footer />
     </div>

@@ -58,16 +58,16 @@ const Home = () => {
     if (uid) {
       get(ref(db, `cart/${uid}/${book.isbn}`)).then((snapshot) => {
         if (snapshot.exists()) {
-          alert("Already in Cart");
+          alert("이미 장바구니에 있습니다.");
           return;
         } else {
           const date = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
           set(ref(db, `cart/${uid}/${book.isbn}`), { ...book, date });
-          alert("Save Cart");
+          alert("장바구니 담기 성공");
         }
       });
     } else {
-      alert("Login first");
+      alert("로그인이 필요합니다.");
       navi("/login");
     }
   };
