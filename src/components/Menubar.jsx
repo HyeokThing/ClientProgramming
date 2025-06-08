@@ -23,7 +23,7 @@ const Menubar = () => {
   };
   return (
       <>
-        <Navbar expand="lg" bg="dark" data-bs-theme="dark">
+        <Navbar expand="lg" bg="black" data-bs-theme="dark">
           <Container fluid>
             <Navbar.Brand href={`${basename}/`}>React</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
