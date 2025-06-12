@@ -15,19 +15,19 @@ const ListPage = () => {
 
     const getList = () => {
         const q = query(collection(db, 'post'), orderBy('date', 'desc'));
-        const rows = [];
         setLoading(true);
 
-        let no = 0;
-        onSnapshot(q, snapshot => {
-            snapshot.forEach(row => {
-                no = no + 1;
+        const unsubscribe = onSnapshot(q, snapshot => {
+            let rows = [];
+            let no = 0;
 
+            snapshot.forEach(row => {
+                no++;
                 const start = (page - 1) * 5 + 1;
                 const end = page * 5;
 
                 if(no >= start && no <= end) {
-                    rows.push({no, id: row.id, ...row.data()});
+                    rows.push({ no, id: row.id, ...row.data() });
                 }
             });
 
@@ -35,6 +35,8 @@ const ListPage = () => {
             setLastPage(Math.ceil(no / 5));
             setLoading(false);
         });
+
+        return unsubscribe;
     };
 
     const onClickWrite = () => {
@@ -47,7 +49,8 @@ const ListPage = () => {
     };
 
     useEffect(() => {
-        getList();
+        const unsubscribe = getList();
+        return () => unsubscribe && unsubscribe();
     }, [page]);
 
     if(loading) return <h1 className='text-center my-5'>Loading...</h1>
