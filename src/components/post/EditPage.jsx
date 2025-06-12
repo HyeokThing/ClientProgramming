@@ -68,7 +68,7 @@ const EditPage = () => {
                             <Button
                                 type='reset'
                                 disabled={title===preTitle && body ===preBody}
-                                className='px-5' variant='secondary'>취소</Button>
+                                className='px-5' variant='secondary'>취소 (수정 리셋)</Button>
                         </div>
                     </Form>
                 </Col>

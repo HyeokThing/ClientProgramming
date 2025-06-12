@@ -30,7 +30,7 @@ const ReadPage = () => {
     }
 
     const onDelete = async() => {
-        if(window.confirm(`${id}번 게시글을 삭제하시겠습니까?`)) {
+        if(window.confirm(`${title} 게시글을 삭제하시겠습니까?`)) {
             await deleteDoc(doc(db, 'post', id));
             navi(-1);
         }
