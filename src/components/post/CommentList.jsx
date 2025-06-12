@@ -4,6 +4,7 @@ import { getFirestore, collection, query, orderBy, where, onSnapshot, doc, updat
 import { Button, Col, Row } from 'react-bootstrap';
 
 const CommentList = ({pid}) => {
+    const [expandedComments, setExpandedComments] = useState([]);
     const [visibleCount, setVisibleCount] = useState(5);
     const login = sessionStorage.getItem('email');
     const db = getFirestore(app);
@@ -11,6 +12,14 @@ const CommentList = ({pid}) => {
 
     const [editId, setEditId] = useState(null);
     const [editContents, setEditContents] = useState('');
+
+    const toggleExpand = (id) => {
+        setExpandedComments(prev =>
+            prev.includes(id)
+                ? prev.filter(cid => cid !== id)
+                : [...prev, id]
+        );
+    };
 
     const getList = () => {
         const q = query(collection(db, 'comment'),
@@ -84,18 +93,22 @@ const CommentList = ({pid}) => {
     return (
         <Row className="justify-content-center mt-3">
             <Col md={10}>
-                {list.slice(0, visibleCount).map(comment => (
-                    <div key={comment.id} style={{marginBottom: '1rem', padding: '0.5rem', border: '1px solid #ccc'}}>
-                        <div>
-                              <span style={{
-                                  fontWeight: 'bold',
-                                  color: comment.email === login ? '#0d6efd' : '#000'
-                              }}>
-                                {comment.date} | {comment.email} {comment.email === login &&
-                                  <span style={{fontWeight: 'normal', color: '#0d6efd'}}>(내 댓글)</span>}
-                              </span>
-                        </div>
-                        <div>
+                {list.slice(0, visibleCount).map(comment => {
+                    const isMine = comment.email === login;
+                    const isExpanded = expandedComments.includes(comment.id);
+
+                    return (
+                        <div key={comment.id} style={{marginBottom: '1rem', padding: '0.5rem', border: '1px solid #ccc'}}>
+                            <div style={{marginBottom: '0.5rem'}}>
+                            <span style={{
+                                fontWeight: 'bold',
+                                color: isMine ? '#0d6efd' : '#000'
+                            }}>
+                                {comment.date} | {comment.email}
+                                {isMine && <span style={{ fontWeight: 'normal', color: '#0d6efd' }}> (내 댓글)</span>}
+                            </span>
+                            </div>
+
                             {editId === comment.id ? (
                                 <textarea
                                     value={editContents}
@@ -104,47 +117,59 @@ const CommentList = ({pid}) => {
                                     style={{width: '100%'}}
                                 />
                             ) : (
-                                <p style={{whiteSpace: 'pre-wrap'}}>{comment.contents}</p>
+                                <p
+                                    onClick={() => toggleExpand(comment.id)}
+                                    style={{
+                                        whiteSpace: 'pre-wrap',
+                                        overflow: 'hidden',
+                                        display: '-webkit-box',
+                                        WebkitLineClamp: isExpanded ? 'none' : 2,
+                                        WebkitBoxOrient: 'vertical',
+                                        cursor: 'pointer',
+                                        margin: 0
+                                    }}
+                                >
+                                    {comment.contents}
+                                </p>
+                            )}
+
+                            {isMine && (
+                                <div style={{display: 'flex', justifyContent: 'flex-end', gap: '8px', marginTop: '0.5rem'}}>
+                                    {editId === comment.id ? (
+                                        <>
+                                            <Button
+                                                size="sm"
+                                                variant="link"
+                                                onClick={onSaveEdit}
+                                                disabled={editContents.trim() === '' || editContents === comment.contents}
+                                                style={{color: editContents.trim() === '' || editContents === comment.contents ? '#aaa' : '#0d6efd'}}
+                                            >
+                                                저장
+                                            </Button>
+                                            <Button
+                                                size="sm"
+                                                variant="link"
+                                                onClick={onCancelEdit}
+                                                style={{color: '#6c757d'}}
+                                            >
+                                                취소
+                                            </Button>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Button size="sm" variant="outline-success" onClick={() => onStartEdit(comment)}>
+                                                수정
+                                            </Button>
+                                            <Button size="sm" variant="outline-danger" onClick={() => onDelete(comment.id)}>
+                                                삭제
+                                            </Button>
+                                        </>
+                                    )}
+                                </div>
                             )}
                         </div>
-                        {comment.email === login && (
-                            <div style={{display: 'flex', justifyContent: 'flex-end', gap: '8px', marginTop: '0.5rem'}}>
-                                {editId === comment.id ? (
-                                    <>
-                                        <Button
-                                            size="sm"
-                                            variant="link"
-                                            onClick={onSaveEdit}
-                                            disabled={editContents.trim() === '' || editContents === comment.contents}
-                                            style={{color: editContents.trim() === '' || editContents === comment.contents ? '#aaa' : '#0d6efd'}}
-                                            // disabled면 연한 회색, 활성화면 파랑
-                                        >
-                                            저장
-                                        </Button>
-                                        <Button
-                                            size="sm"
-                                            variant="link"
-                                            onClick={onCancelEdit}
-                                            style={{color: '#6c757d'}} // 회색
-                                        >
-                                            취소
-                                        </Button>
-                                    </>
-                                ) : (
-                                    <>
-                                        <Button size="sm" variant="outline-success"
-                                                onClick={() => onStartEdit(comment)}>
-                                            수정
-                                        </Button>
-                                        <Button size="sm" variant="outline-danger" onClick={() => onDelete(comment.id)}>
-                                            삭제
-                                        </Button>
-                                    </>
-                                )}
-                            </div>
-                        )}
-                    </div>
-                ))}
+                    );
+                })}
 
                 {list.length > visibleCount && (
                     <div className="text-center">
